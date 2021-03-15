@@ -1,7 +1,7 @@
 <template>
 <div class="w-full flex">
     <router-view></router-view>
-  </div>
+</div>
 </template>
 
 <script>

@@ -1,15 +1,15 @@
 <template>
-  <div class="justify-center max-w-full bg-red-100 mx-2">
+  <div class="justify-center min-w-full bg-red-100 mx-2">
     <table class="justify-between min-w-full">
       <caption class=" table-caption">
         List of all donors
       </caption>
       <tr>
-          <th>S/L</th>
-          <th>Name</th>
-          <th>Blood Group</th>
-          <th>Mobile</th>
-          <th>Location</th>
+          <th class="px-2">S/L</th>
+          <th class="px-2">Name</th>
+          <th class="px-2">Blood Group</th>
+          <th class="px-2">Mobile</th>
+          <th class="px-2">Location</th>
       </tr>
       <tr v-for="(donor, index) in Donors" :key="index"  class="bg-gray-50 text-center border-b-2 border-gray-200">
           <td>{{ index }}</td>
