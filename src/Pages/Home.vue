@@ -9,12 +9,16 @@
     </div>
     <div class="min-w-full items-center flex justify-center text-center py-10">
         <ul>
-            <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-lg font-sans h-16 bg-red-600 w-64 my-10">
-                <router-link to="/all">Search for blood</router-link> 
-            </li>
-            <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-lg font-sans h-16 bg-red-600 w-64 my-10">
-                <router-link to="/a+">Get yourself on the list</router-link> 
-            </li>
+            <router-link to="/list">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                    Search for blood 
+                </li>
+            </router-link>
+            <router-link to="/join">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                    Get yourself on the list 
+                </li>
+            </router-link>
         </ul>
     </div>
   </div>
