@@ -1,5 +1,6 @@
 <template>
 <div class="w-full flex">
+    hello
     <router-view></router-view>
 </div>
 </template>
