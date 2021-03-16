@@ -1,28 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../Pages/Home';
-import List from '../Pages/List';
-import Join from '../Pages/Join';
 
 const routes = [
   {
     path: '/join',
     name: 'Join',
-    component: Join
+    component: () => import("../Pages/Join")
   },
   {
     path: '/list',
     name: 'List',
-    component: List
+    component: () => import("../Pages/List")
   },
   {
     path: '/Blood-Donors',
     name: 'Home',
-    component: Home
+    component: () => import("../Pages/Home")
   },
   {
     path: '/',
     name: 'Home_Short',
-    component: Home
+    component: () => import("../Pages/Home")
   }
 ]
 
