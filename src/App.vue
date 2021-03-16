@@ -1,14 +1,14 @@
 <template>
-    <Home/>
+    <!-- <Home/> -->
 <div class="w-full h-full flex">
     <router-view></router-view>
 </div>
 </template>
 
 <script>
-import Home from './Pages/Home.vue'
+// import Home from './Pages/Home.vue'
 export default {
-  components: ( Home ),
+  // components: ( Home ),
   name: 'App',
 }
 </script>
