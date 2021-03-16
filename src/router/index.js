@@ -18,6 +18,11 @@ const routes = [
     path: '/Blood-Donors',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
   }
 ]
 
