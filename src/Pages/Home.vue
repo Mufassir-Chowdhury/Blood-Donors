@@ -10,14 +10,14 @@
     <div class="min-w-full items-center flex justify-center text-center py-12">
         <ul>
             <router-link to="/list">
-                <button :v-on="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Search for blood 
-                </button>
+                </li>
             </router-link>
             <router-link to="/join">
-                <button class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
-                </button>
+                </li>
             </router-link>
         </ul>
     </div>
