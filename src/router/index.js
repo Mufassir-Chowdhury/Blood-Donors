@@ -5,12 +5,12 @@ import Join from '../Pages/Join';
 
 const routes = [
   {
-    path: '/join',
+    path: '/Blood-Donors/join',
     name: 'Join',
     component: Join
   },
   {
-    path: '/list',
+    path: '/Blood-Donors/list',
     name: 'List',
     component: List
   },
