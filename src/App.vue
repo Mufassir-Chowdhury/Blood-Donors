@@ -1,6 +1,6 @@
 <template>
-<div class="w-full h-full flex">
     <home/>
+<div class="w-full h-full flex">
     <router-view></router-view>
 </div>
 </template>
