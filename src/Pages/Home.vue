@@ -10,14 +10,14 @@
     <div class="min-w-full items-center flex justify-center text-center py-12">
         <ul>
             <router-link to="/list">
-                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <button :v-on="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Search for blood 
-                </li>
+                </button>
             </router-link>
             <router-link to="/join">
-                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <button class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
-                </li>
+                </button>
             </router-link>
         </ul>
     </div>
@@ -26,7 +26,17 @@
 
 <script>
 export default {
-    name: 'Home'
+    name: 'Home',
+    
+    setup(){
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+        return {
+            topFunction
+        } 
+    }
 }
 </script>
 
