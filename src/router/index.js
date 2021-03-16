@@ -15,7 +15,7 @@ const routes = [
     component: List
   },
   {
-    path: '/',
+    path: '/Blood-Donors',
     name: 'Home',
     component: Home
   }
