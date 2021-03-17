@@ -1,9 +1,9 @@
 export const donors = [
     {
-        "Name": "name1",
+        "Name": "Mufassir Ahmad Chowdhury",
         "Blood": "B+",
-        "Mobile": "Test Number1",
-        "Location": "Test Location1"
+        "Mobile": "+8801771144308",
+        "Location": "323 North Bagbari, Sylhet"
     },
     {
         "Name" : "name0", 

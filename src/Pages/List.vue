@@ -7,34 +7,77 @@
   <div class="h-32 flex w-full justify-items-center justify-center">
     <form @submit.prevent="filter" class="flex align-middle px-4 mx-2 py-5">
       <label class="block px-5 text-xl py-3">BLOOD GROUP: </label>
-      <select v-model="state.selectedGroup" class="text-center text-xl w-32 h-10 my-2">
+      <select v-model="state.selectedGroup" class="relative text-center text-xl w-32 h-10 my-2 appearance-none focus:outline-none focus:ring focus:border-red-300 rounded-lg bg-red-300 text-white">
           <option :value="option.value" v-for="(option, index) in state.Groups" :key="index">
             {{ option.name }}
           </option>
       </select>
-      <button class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-300 h-10 uppercase">Filter</button>
+      <button class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-600 text-white h-10 uppercase">Filter</button>
     </form>
   </div>
-  <div class="justify-center min-w-full bg-red-100">
-    <table class="justify-between min-w-full">
-      <caption class=" table-caption">
-        List of all donors
-      </caption>
-      <tr>
-          <th class="px-2">S/L</th>
-          <th class="px-2">Name</th>
-          <th class="px-2">Blood Group</th>
-          <th class="px-2">Mobile</th>
-          <th class="px-2">Location</th>
-      </tr>
-      <tr v-for="(donor, index) in state.Donors" :key="index"  class="bg-gray-50 text-center border-b-2 border-gray-200">
-          <td>{{ index }}</td>
-          <td>{{ donor.Name }}</td>
-          <td>{{ donor.Blood }}</td>
-          <td @click="copy(donor.Mobile)" id="myInput">{{ donor.Mobile }}</td>
-          <td>{{ donor.Location }}</td>
-      </tr>
-    </table>
+  <div class="bg-indigo-600">
+    <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between flex-wrap">
+        <div class="w-0 flex-1 flex items-center">
+          <p class="ml-3 text-white truncate text-lg font-bold">
+            Total donors found:
+          </p>
+        </div>
+        <div class="order-3 my-2 w-16 sm:order-2">
+          <div class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50">
+            {{ state.Donors.length }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Location
+              </th>
+              <th scope="col" class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Blood Group
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr v-for="(donor, index) in state.Donors" :key="index">
+              <td class="px-2 py-4">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      {{ donor.Name }}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{ donor.Mobile }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4">
+                <div class="text-sm text-gray-900">{{ donor.Location }}</div>
+                <!-- <div class="text-sm text-gray-500">Optimization</div> -->
+              </td>
+              <td class="px-10 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  {{ donor.Blood }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 </template>
