@@ -15,7 +15,7 @@
       <button class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-600 text-white h-10 uppercase">Filter</button>
     </form>
   </div>
-  <div class="bg-indigo-600">
+  <div class="bg-red-300">
     <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between flex-wrap">
         <div class="w-0 flex-1 flex items-center">
