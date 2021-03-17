@@ -4,12 +4,12 @@
     <router-link to="/">Blood Donors</router-link>
   </div>
 
-<div class="hidden sm:block" aria-hidden="true">
+<!-- <div class="hidden sm:block" aria-hidden="true">
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
   </div>
-</div>
-
+</div> -->
+<!-- 
 <div>
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
@@ -84,7 +84,22 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
+<form
+  action="https://formspree.io/f/xyybrvod"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="_replyto">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+    <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 
 </template>
 
@@ -106,8 +121,8 @@ export default {
           'Blood': 'B+',
           'Moblie': 'New Number',
           'Location': 'New Location',
+        
         })
-        console.log('added');
       }
 
       return {
