@@ -7,7 +7,7 @@
   <div class="h-32 flex w-full justify-items-center justify-center">
     <form @submit.prevent="filter" class="flex align-middle px-4 mx-2 py-5">
       <label class="block px-5 text-xl py-3">BLOOD GROUP: </label>
-      <select v-model="state.selectedGroup" class="relative text-center text-xl w-32 h-10 my-2 appearance-none focus:outline-none focus:ring focus:border-red-300 rounded-lg bg-red-300 text-white">
+      <select v-model="state.selectedGroup" class="relative text-center py-2 text-xl w-32 h-10 my-2 appearance-none focus:outline-none focus:ring focus:border-red-300 rounded-lg bg-red-300 text-white">
           <option :value="option.value" v-for="(option, index) in state.Groups" :key="index">
             {{ option.name }}
           </option>
