@@ -35,9 +35,9 @@
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <div class="min-w-full max-w-full divide-y divide-gray-200">
-            <div class="grid grid-cols-12 gap-3 bg-gray-50">
+      <div class="shadow overflow-hidden sm:rounded-lg">
+        <div class="min-w-full max-w-full ">
+            <div class="grid grid-cols-12 gap-3 divide-y divide-gray-200 bg-gray-50">
               <div scope="col" class="col-span-5 sm:col-span-4 px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Name
               </div>
@@ -48,34 +48,50 @@
                 Blood Group
               </div>
             </div>
-            <div @click="openModal = true; User = donor" class="hover:bg-gray-100 grid grid-cols-12 gap-8 bg-white divide-y divide-gray-200" v-for="(donor, index) in state.Donors" :key="index">
-              <div class="col-span-5 sm:col-span-4 py-4">
-                <div class="flex items-center">
-                  <div class="md:ml-6 ml-2">
-                    <div class="text-sm font-medium text-gray-900 truncate">
-                      {{ donor.Name }}
-                    </div>
-                    <div class="text-sm text-gray-500">
-                      {{ donor.Mobile }}
+            <div @click="openModal = true; User = donor" v-for="(donor, index) in state.Donors" :key="index">
+              <transition-group tag="div" appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
+                v-show="state.selectedGroup == 'All' || state.selectedGroup == donor.Blood"
+                appear-class="transition-all duration-500 ease-linear"
+                enter-class="transition-all duration-500 ease-linear"
+                leave-class="transition-all duration-500 ease-linear"
+                enter-active-class="transition-all duration-500 ease-linear"
+                enter-from-class="opacity-0 transform scale-50"
+                enter-to-class="opacity-100 transform scale-100"
+                leave-active-class="transition-all duration-500 ease-linear absolute"
+                leave-from-class="opacity-100 transform scale-100"
+                leave-to-class="opacity-0 transform scale-50"
+                move-class="transition-all duration-1000 ease-in-out"
+              >
+                <div class="border-b border-gray-200 hover:bg-gray-100 grid grid-cols-12 gap-8 bg-white">
+                  <div class="col-span-5 sm:col-span-4 py-4">
+                    <div class="flex items-center">
+                      <div class="md:ml-6 ml-2">
+                        <div class="text-sm font-medium text-gray-900 truncate">
+                          {{ donor.Name }}
+                        </div>
+                        <div class="text-sm text-gray-500">
+                          {{ donor.Mobile }}
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <div class="col-span-5 sm:col-span-4 px-4 py-4 truncate">
+                    <div class="text-sm text-gray-900">{{ donor.Location }}</div>
+                  </div>
+                  <div class="col-span-2 sm:col-span-4 px-1 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      {{ donor.Blood }}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="col-span-5 sm:col-span-4 px-4 py-4 truncate">
-                <div class="text-sm text-gray-900">{{ donor.Location }}</div>
-              </div>
-              <div class="col-span-2 sm:col-span-4 px-1 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  {{ donor.Blood }}
-                </span>
-              </div>
+              </transition-group>
             </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<transition
+<transition appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
   v-show="openModal"
   enter-active-class="transition-all duration-700"
   enter-from-class="opacity-0"
@@ -114,26 +130,10 @@ export default {
       ]
     })
 
-    function copy(Number){
-      // var copyNumber = document.getElementById("myInput");
-      // copyNumber.select();
-      Number.select();
-      document.execCommand("copy");
-      alert('Copied!');
-    }
-
-    function filter(){
-      if(state.selectedGroup == 'All'){
-        state.Donors = donors;
-      } else{
-        state.Donors = donors.filter(donor => donor.Blood == state.selectedGroup);
-      }
-    }
+    
 
     return {
       state,
-      filter,
-      copy,
       openModal,
       User
     }
