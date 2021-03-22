@@ -15,12 +15,12 @@
     </div>
     <div class="h-screen lg:h-auto min-w-full items-center flex justify-center text-center py-12">
         <ul>
-            <router-link to="/list">
+            <router-link to="/Blood-Donors/list">
                 <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Search for blood 
                 </li>
             </router-link>
-            <router-link to="/join">
+            <router-link to="/Blood-Donors/join">
                 <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
                 </li>

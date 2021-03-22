@@ -2,12 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/join',
+    path: '/Blood-Donors/join',
     name: 'Join',
     component: () => import("../Pages/Join")
   },
   {
-    path: '/list',
+    path: '/Blood-Donors/list',
     name: 'List',
     component: () => import("../Pages/List")
   },
