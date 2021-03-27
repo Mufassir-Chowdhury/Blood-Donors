@@ -1,18 +1,17 @@
 <template>
 <div class="flex-col w-full ">
-  <div class="flex bg-red-500 shadow-xl h-20 align-middle text-2xl py-5 text-white">
-    <img class="mx-16 w-10 h-10" alt="" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSItNSAwIDUxMiA1MTIuMDAwOTkiIHdpZHRoPSI1MTJwdCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZjQ0NTQ1Ij48cGF0aCBkPSJtMzYzLjM3MTA5NCA0NTMuMzIwMzEyYy0yNC45NTcwMzIgMzYuNzg5MDYzLTY1Ljc0NjA5NCA1OS41NTA3ODItMTE0LjQ1NzAzMiA1OC42NTYyNS0xMDIuOTg4MjgxLTIuMzI0MjE4LTE2NC43Njk1MzEtMTE1Ljc2MTcxOC0xMTIuNjQ0NTMxLTIwNC42MTcxODdsMTAwLjA3ODEyNS0xNzAuNTgyMDMxYzQuODMyMDMyLTguMjUzOTA2IDE0LjQ3MjY1Ni0xMC45MjE4NzUgMjIuNDE0MDYzLTguMDE1NjI1IDMuODEyNSAxLjM4NjcxOSA3LjIzMDQ2OSA0LjA1NDY4NyA5LjU1NDY4NyA4LjAxNTYyNWwxMDAuMDc4MTI1IDE3MC41ODIwMzFjMjguNTgyMDMxIDQ4LjcxNDg0NCAyMi45MTQwNjMgMTA0LjgyODEyNS01LjAyMzQzNyAxNDUuOTYwOTM3em0wIDAiLz48cGF0aCBkPSJtNDk2LjMyODEyNSAxNTQuNjY3OTY5Yy0xMS40MzM1OTQgMjYuMjg1MTU2LTM2Ljc5Mjk2OSA0NC40MjE4NzUtNjguOTQxNDA2IDQzLjYyODkwNi01NS4wNjI1LTEuNzE4NzUtODcuNzQyMTg4LTYyLjUtNTkuODY3MTg4LTExMC4wMTk1MzFsNDYuNDIxODc1LTc5LjEzMjgxM2M0LjgzNTkzOC04LjI0MjE4NyAxNC40NzY1NjMtMTAuOTIxODc1IDIyLjQxNDA2My04LjAwMzkwNiAzLjgxNjQwNiAxLjM3NSA3LjI0MjE4NyA0LjA0Mjk2OSA5LjU1ODU5MyA4LjAwMzkwNmw0Ni40MjE4NzYgNzkuMTMyODEzYzEyLjcwMzEyNCAyMS42NTIzNDQgMTIuODI4MTI0IDQ2LjA3MDMxMiAzLjk5MjE4NyA2Ni4zOTA2MjV6bTAgMCIvPjxwYXRoIGQ9Im0xMjQuMzk4NDM4IDIzMi44MDA3ODFjLTguOTc2NTYzIDI0LjEzMjgxMy0zMS40ODgyODIgNDIuMDAzOTA3LTYwLjE0ODQzOCA0Mi4wMDM5MDctNTAuMzY3MTg4IDAtODAuMjM0Mzc1LTU0Ljg5ODQzOC01NS4yNjk1MzEtOTcuNDUzMTI2bDQxLjEwOTM3NS03MC4wNzgxMjRjNC42Mjg5MDYtNy44ODY3MTkgMTQuMTgzNTk0LTEwLjAyMzQzOCAyMS40NzY1NjItNi40MDYyNSAyLjcxODc1IDEuMzMyMDMxIDUuMTE3MTg4IDMuNDgwNDY4IDYuODM1OTM4IDYuNDA2MjVsNDEuMTA5Mzc1IDcwLjA3ODEyNGMxMC41NjY0MDYgMTguMDA3ODEzIDExLjMwNDY4NyAzOC4xNjAxNTcgNC44ODY3MTkgNTUuNDQ5MjE5em0wIDAiLz48L2c+PHBhdGggZD0ibTM2My4zNzEwOTQgNDUzLjMyMDMxMmMtMTkuMTY0MDYzIDExLjgyNDIxOS00MS44NDc2NTYgMTkuMDAzOTA3LTY2Ljk4MDQ2OSAxOS41NzgxMjYtMTA2LjM3ODkwNiAyLjkyOTY4Ny0xNzMtMTEzLjM4NjcxOS0xMTkuNDg0Mzc1LTIwNC42MTcxODhsODEuODU1NDY5LTEzOS41MTk1MzFjMy44MTI1IDEuMzg2NzE5IDcuMjMwNDY5IDQuMDU0Njg3IDkuNTU0Njg3IDguMDE1NjI1bDEwMC4wNzgxMjUgMTcwLjU4MjAzMWMyOC41ODIwMzEgNDguNzE0ODQ0IDIyLjkxNDA2MyAxMDQuODI4MTI1LTUuMDIzNDM3IDE0NS45NjA5Mzd6bTAgMCIgZmlsbD0iI2ZiNTg1OCIvPjxwYXRoIGQ9Im00OTYuMzI4MTI1IDE1NC42Njc5NjljLTcuMTQ4NDM3IDIuNjk5MjE5LTE0LjkzMzU5NCA0LjI5Mjk2OS0yMy4yMzA0NjkgNC41NTA3ODEtLjgzMjAzMS4wMjM0MzgtMS42ODc1LjA0Mjk2OS0yLjUzMTI1LjA0Mjk2OS0uODU1NDY4IDAtMS42OTkyMTgtLjAxOTUzMS0yLjU0Mjk2OC0uMDQyOTY5LTU1LjA1ODU5NC0xLjcxODc1LTg3Ljc1LTYyLjUtNTkuODYzMjgyLTExMC4wMDc4MTJsMjguMTk1MzEzLTQ4LjA3MDMxM2MzLjgxNjQwNiAxLjM3NSA3LjI0MjE4NyA0LjA0Mjk2OSA5LjU1ODU5MyA4LjAwMzkwNmw0Ni40MjE4NzYgNzkuMTMyODEzYzEyLjcwMzEyNCAyMS42NTIzNDQgMTIuODI4MTI0IDQ2LjA3MDMxMiAzLjk5MjE4NyA2Ni4zOTA2MjV6bTAgMCIgZmlsbD0iI2ZiNTg1OCIvPjxwYXRoIGQ9Im0xMjQuMzk4NDM4IDIzMi44MDA3ODFjLTUuMzk4NDM4IDEuNjk5MjE5LTExLjE3OTY4OCAyLjcwNzAzMS0xNy4yNjU2MjYgMi44OTQ1MzEtLjc0MjE4Ny4wMjM0MzgtMS40OTIxODcuMDM1MTU3LTIuMjUuMDM1MTU3LS43NSAwLTEuNTAzOTA2LS4wMTE3MTktMi4yNDIxODctLjAzNTE1Ny00OC43NTc4MTMtMS41MTk1MzEtNzcuNzA3MDMxLTU1LjMzOTg0My01My4wMTk1MzEtOTcuNDE3OTY4bDIxLjk0NTMxMi0zNy40MTAxNTZjMi43MTg3NSAxLjMzMjAzMSA1LjExNzE4OCAzLjQ4MDQ2OCA2LjgzNTkzOCA2LjQwNjI1bDQxLjEwOTM3NSA3MC4wNzgxMjRjMTAuNTY2NDA2IDE4LjAwNzgxMyAxMS4zMDQ2ODcgMzguMTYwMTU3IDQuODg2NzE5IDU1LjQ0OTIxOXptMCAwIiBmaWxsPSIjZmI1ODU4Ii8+PC9zdmc+" />
-    <router-link to="/Blood-Donors">Blood Donors</router-link>
-  </div>
-  <div class="h-32 flex w-full justify-items-center justify-center">
-    <form @submit.prevent="filter" class="flex align-middle px-4 mx-2 py-5">
-      <label class="block px-5 text-xl py-3">BLOOD GROUP: </label>
-      <select v-model="state.selectedGroup" class="relative text-center py-2 text-xl w-32 h-10 my-2 appearance-none focus:outline-none focus:ring focus:border-red-300 rounded-lg bg-red-300 text-white">
-          <option :value="option.value" v-for="(option, index) in state.Groups" :key="index">
-            {{ option.name }}
-          </option>
-      </select>
-      <div class="mb-3 mt-4 px-2">
+  <Header :Page="PageName"/>
+  <div class="md:h-32 h-auto flex w-full justify-items-center justify-center">
+    <form @submit.prevent="filter" class="flex flex-col md:flex-row align-middle px-4 mx-2 py-5">
+      <div class="flex">
+        <label class="block px-5 align-text-bottom text-xl py-3">BLOOD GROUP: </label>
+        <select @click="filter" v-model="state.selectedGroup" class="relative text-center py-2 text-xl w-20 md:w-32 h-10 my-2 appearance-none focus:outline-none focus:ring focus:border-red-300 rounded-lg bg-red-300 text-white">
+            <option :value="option.value" v-for="(option, index) in state.Groups" :key="index">
+              {{ option.name }}
+            </option>
+        </select>
+      </div>
+      <div @click="filter" class="md:mx-4 mx-auto mb-3 mt-4 px-2">
         <div class="relative inline-block w-10 mr-2 align-middle select-none">
           <input @click="eligibleOnly = !eligibleOnly" value="eligibleOnly" type="checkbox" name="toggle" id="Red" class="checked:bg-red-500 outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
             <label for="Red" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer">
@@ -22,7 +21,7 @@
           Eligible Only
         </span>
       </div>
-      <button class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-600 text-white h-10 uppercase">Filter</button>
+      <!-- <button @click="filter" class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-600 text-white h-10 uppercase">Filter</button> -->
     </form>
   </div>
   <div class="bg-red-300">
@@ -59,16 +58,17 @@
               </div>
             </div>
             <transition-group tag="div" 
-              appear-active-class="transition-all duration-1000"
-              appear-class="transition-all duration-500 ease-linear"
+             
+              appear-active-class="transition-opacity duration-1000"
+              appear-class="transition-opacity duration-100 ease-in-out"
               appear-to-class="opacity-100 transform scale-100"
               appear-from-class="opacity-0 transform scale-50"
-              enter-class="transition-all duration-500 ease-linear"
-              leave-class="transition-all duration-500 ease-linear"
-              enter-active-class="transition-all duration-500 ease-linear"
+              enter-class="transition-opacity duration-100 ease-in-out"
+              leave-class="transition-opacity duration-100 ease-in-out"
+              enter-active-class="transition-opacity duration-100 ease-in-out"
               enter-from-class="opacity-0 transform scale-50"
               enter-to-class="opacity-100 transform scale-100"
-              leave-active-class="transition-all duration-500 ease-linear absolute"
+              leave-active-class="transition-opacity duration-100 ease-in-out absolute"
               leave-from-class="opacity-100 transform scale-100"
               leave-to-class="opacity-0 transform scale-50"
               move-class="transition-all duration-1000 ease-in-out"
@@ -123,35 +123,40 @@
 import { reactive, ref } from '@vue/reactivity';
 import { donors } from '../assets/donors';
 import UserModal from '../components/UserModal.vue';
+import Header from '../components/Header.vue';
 export default {
-  components: { UserModal },
+  components: { UserModal, Header },
   name: 'List',
   setup() {
     const openModal = ref(false);
     const eligibleOnly = ref(false);
     const User = ref({});
+    let PageName = 'List'
     // let len = ref(donors.length);
     const state = reactive({
       Donors: donors,
       len: donors.length,
-      selectedGroup: 'All',
+      selectedGroup: "All",
       Groups: [
-        { value: 'All', name: 'All' },
-        { value: 'A+', name: 'A+' },
-        { value: 'B+', name: 'B+' },
-        { value: 'AB+', name: 'AB+' },
-        { value: 'O+', name: 'O+' },
-        { value: 'A-', name: 'A-' },
-        { value: 'B-', name: 'B-' },
-        { value: 'AB-', name: 'AB-' },
-        { value: 'O-', name: 'O-' }
+        { value: "All", name: "All" },
+        { value: "A+", name: "A+" },
+        { value: "B+", name: "B+" },
+        { value: "AB+", name: "AB+" },
+        { value: "O+", name: "O+" },
+        { value: "A-", name: "A-" },
+        { value: "B-", name: "B-" },
+        { value: "AB-", name: "AB-" },
+        { value: "O-", name: "O-" }
       ]
     })
     function filter(){
-      state.len = donors.filter(donor => (state.selectedGroup == 'All' || state.selectedGroup == donor.Blood) && (eligibleOnly == false || (eligibleOnly == true && donor.eligible == true))).length;
-      for (const donor in donors) {
-        if ((state.selectedGroup == 'All' || state.selectedGroup == donor.Blood) && (eligibleOnly == false || (eligibleOnly == true && donor.eligible == true))) {
-          console.log('ok');          
+      state.len = 0;
+      for (const donor in state.Donors) {
+        if (Object.hasOwnProperty.call(state.Donors, donor)) {
+          const element = state.Donors[donor];
+          if((state.selectedGroup == 'All' || state.selectedGroup == element.Blood) && (eligibleOnly.value == false || (eligibleOnly.value == true && element.eligible == true))) {
+            state.len +=1;
+          }
         }
       }
     }
@@ -161,7 +166,8 @@ export default {
       openModal,
       User,
       eligibleOnly,
-      filter
+      filter,
+      PageName
     }
   }
 }
