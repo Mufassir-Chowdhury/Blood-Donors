@@ -1,14 +1,6 @@
 <template>
 <div class="flex-col w-full">
   <Header :Page="PageName"/>
-<div v-if="users.length == 0">
-  <div class="fixed z-10 align-middle min-h-screen min-w-screen bg-opacity-40 mx-auto bg-transparent justify-center items-center">
-    <div class="half-circle-spinner">
-      <div class="circle circle-1"></div>
-      <div class="circle circle-2"></div>
-    </div>
-  </div>
-</div>
   <div class="md:h-32 h-auto flex w-full justify-items-center justify-center">
     <form @submit.prevent="filter" class="flex flex-col md:flex-row align-middle px-4 mx-2 py-5">
       <div class="flex">
@@ -63,6 +55,85 @@
               <div scope="col" class="col-span-2 sm:col-span-4 pr-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Blood Group
               </div>
+            </div>
+            <div v-if="users.length == 0">
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+              <ContentLoader
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
             </div>
             <transition-group tag="div" 
              
@@ -131,11 +202,13 @@ import { useLoadUsers, deleteUser } from '@/firebase'
 import Header from '../components/Header'
 import { reactive, ref } from '@vue/reactivity'
 import UserModal from '../components/UserModal'
+import { ContentLoader } from 'vue-content-loader'
 export default {
   name: 'List',
   components: {
     Header,
-    UserModal
+    UserModal,
+    ContentLoader
   },
   setup() {
     const users = useLoadUsers()
@@ -174,43 +247,5 @@ export default {
 </script>
 
 <style>
-.half-circle-spinner, .half-circle-spinner * {
-  box-sizing: border-box;
-}
 
-.half-circle-spinner {
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  position: relative;
-}
-
-.half-circle-spinner .circle {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-  border: calc(60px / 10) solid transparent;
-}
-
-.half-circle-spinner .circle.circle-1 {
-  border-top-color: #ff1d5e;
-  animation: half-circle-spinner-animation 1s infinite;
-}
-
-.half-circle-spinner .circle.circle-2 {
-  border-bottom-color: #ff1d5e;
-  animation: half-circle-spinner-animation 1s infinite alternate;
-}
-
-@keyframes half-circle-spinner-animation {
-  0% {
-    transform: rotate(0deg);
-
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}
 </style>
