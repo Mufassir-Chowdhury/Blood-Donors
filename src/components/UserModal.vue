@@ -12,7 +12,7 @@
                     <div class="flex flex-col shadow-lg items-center justify-center px-4 py-6 w-full bg-white dark:bg-gray-800">
                         <div class="bg-green-100 py-auto text-4xl text-green-800 w-20 h-20 rounded-full">
                             <div class="m-5">
-                                {{ User.Blood }}
+                                {{ User.bloodGroup }}
                             </div>
                         </div>
                         <p class="text-gray-800 dark:text-gray-200 text-xl md:text-4xl font-bold mt-4">
@@ -23,9 +23,9 @@
                         </p>
                         <div class="flex flex-col items-end space-x-2 my-6 align-baseline">
                             <p class="text-4xl text-black dark:text-white font-bold">
-                                2/3/2021
+                                {{ User.donated }}
                             </p>
-                            <span v-if="User.eligible" class="text-green-500 text-xl font-bold items-center">
+                            <span v-if="User.eligibility" class="text-green-500 text-xl font-bold items-center">
                                 Eligible
                             </span>
                             <span v-else class="text-red-500 text-xl font-bold items-center">
@@ -38,7 +38,7 @@
                                     Address
                                 </p>
                                 <div class="text-sm">
-                                    {{ User.Location }}
+                                    {{ User.street }}
                                 </div>
                             </div>
                             <div class="flex items-center mb-2 pb-2 text-lg space-x-12 md:space-x-24 justify-between border-b border-gray-200">
@@ -46,7 +46,7 @@
                                     Mobile
                                 </p>
                                 <div :href="User.Mobile" class="text-sm" ref="mylink">
-                                    {{ User.Mobile }}
+                                    {{ User.mobile }}
                                 </div>
                             </div>
                             <div class="flex items-center text-lg space-x-12 md:space-x-24 justify-between">

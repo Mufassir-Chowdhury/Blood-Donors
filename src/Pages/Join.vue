@@ -1,7 +1,7 @@
 <template>
   <Header :Page="pageName"/>
 
-<form action="https://formspree.io/f/xyybrvod" method="POST">
+<form @submit.prevent="onSubmit">
 <input type="hidden" name="_subject" value="New submission from 'Blood Donors, Sylhet">
 
   <div class="hidden sm:block" aria-hidden="true">
@@ -26,22 +26,22 @@
               <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                   <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
-                  <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.firstName" type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                   <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
-                  <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.lastName" type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                   <label for="email_address" class="block text-sm font-medium text-gray-700">Email address</label>
-                  <input type="text" name="email_address" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.email" type="text" name="email_address" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
                   <label for="blood_group" class="block text-sm font-medium text-gray-700">Blood Group</label>
-                  <input type="text" name="blood_group" id="blood_group" autocomplete="blood-group" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.bloodGroup" type="text" name="blood_group" id="blood_group" autocomplete="blood-group" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3">
@@ -53,22 +53,22 @@
 
                 <div class="col-span-6">
                   <label for="street_address" class="block text-sm font-medium text-gray-700">Street address</label>
-                  <input type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.street" type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                   <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                  <input disabled type="text" value="Sylhet" name="city" id="city" class="mt-1 py-1 px-4 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input disabled type="text" value="Sylhet" name="city" id="city" class="mt-1 py-1 px-4 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                   <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
-                  <input type="text" name="state" id="state" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.area" type="text" name="state" id="state" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
 
                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                   <label for="number" class="block text-sm font-medium text-gray-700">Mobile</label>
-                  <input type="text" name="number" id="number" autocomplete="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  <input v-model="form.mobile" type="tel" name="number" id="number" autocomplete="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
         <div class="px-4 sm:px-0">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Notifications</h3>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Donation</h3>
         </div>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
@@ -95,23 +95,24 @@
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
               <fieldset>
                 <div>
-                  <legend class="text-base font-medium text-gray-900">Push Notifications</legend>
-                  <p class="text-sm text-gray-500">When do you want to get notifications:</p>
+                  <legend class="text-base font-medium text-gray-900">Donation</legend>
+                  <p class="text-sm text-gray-500">When did you last donated blood:</p>
                 </div>
-                <div class="mt-4 space-y-4">
-                  <div class="flex items-center">
-                    <input id="push_everything" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                    <label for="push_everything" class="ml-3 block text-sm font-medium text-gray-700">
-                      For every blood-requests (only if you have the same blood group)
+                <input v-model="form.donated" type="date" name="donated" id="donated">
+                <div class="md:mr-4 mx-auto mb-3 mt-4 pr-2">
+                  <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                    <input @click="form.eligibility = !(form.eligibility)" v-model="form.eligibility" type="checkbox" name="toggle" id="Red" class="checked:bg-red-500 outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"/>
+                      <label for="Red" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer">
                     </label>
                   </div>
-                  <div class="flex items-center">
-                    <input id="push_nothing" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                    <label for="push_nothing" class="ml-3 block text-sm font-medium text-gray-700">
-                      No push notifications
-                    </label>
-                  </div>
+                  <span v-if="form.eligibility" class="text-gray-400 font-medium">
+                    Eligible
+                  </span>
+                  <span v-else class="text-gray-400 font-medium">
+                    Not Eligible
+                  </span>
                 </div>
+
               </fieldset>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -129,33 +130,33 @@
 
 <script>
 import { reactive } from '@vue/reactivity';
-import { donors } from '../assets/donors';
 import Header from '../components/Header.vue';
+import { createUser } from '@/firebase'
 
 export default {
   components: { Header },
     name: 'Join',
     setup(){
-
-      let pageName = 'Join';
-      const state = reactive({
-        donors
-      })
-
-      function add(){
-        state.donors.push({
-          'Name': 'New',
-          'Blood': 'B+',
-          'Moblie': 'New Number',
-          'Location': 'New Location',
-        
-        })
+      const form = reactive({ firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
+      const onSubmit = async () => {
+        await createUser({ ...form })
+        form.firstName = ''
+        form.lastName = ''
+        form.email = ''
+        form.street = ''
+        form.area = ''
+        form.mobile = ''
+        form.bloodGroup = ''
+        form.donated = ''
+        form.eligibility = false
       }
 
+      let pageName = 'Join';
+
       return {
-        add,
-        state,
-        pageName
+        pageName,
+        form,
+        onSubmit
       }
     }
 }
