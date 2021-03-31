@@ -1,6 +1,14 @@
 <template>
-<div class="flex-col w-full ">
+<div class="flex-col w-full">
   <Header :Page="PageName"/>
+<div v-if="users.length == 0">
+  <div class="fixed z-10 align-middle min-h-screen min-w-screen bg-opacity-40 mx-auto bg-transparent justify-center items-center">
+    <div class="half-circle-spinner">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+    </div>
+  </div>
+</div>
   <div class="md:h-32 h-auto flex w-full justify-items-center justify-center">
     <form @submit.prevent="filter" class="flex flex-col md:flex-row align-middle px-4 mx-2 py-5">
       <div class="flex">
@@ -13,7 +21,7 @@
       </div>
       <div @click="filter" class="md:mx-4 mx-auto mb-3 mt-4 px-2">
         <div class="relative inline-block w-10 mr-2 align-middle select-none">
-          <input @click="eligibleOnly = !eligibleOnly" value="eligibleOnly" type="checkbox" name="toggle" id="Red" class="checked:bg-red-500 outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"/>
+          <input @click="eligibleOnly = !eligibleOnly" v-model="eligibleOnly" type="checkbox" name="toggle" id="Red" class="checked:bg-red-500 outline-none focus:outline-none right-4 checked:right-0 duration-200 ease-in absolute block w-6 h-6 rounded-full bg-white border-2 appearance-none cursor-pointer"/>
             <label for="Red" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer">
           </label>
         </div>
@@ -21,7 +29,6 @@
           Eligible Only
         </span>
       </div>
-      <!-- <button @click="filter" class="block px-4 mx-2 py-1 my-2  text-xl rounded-md bg-red-600 text-white h-10 uppercase">Filter</button> -->
     </form>
   </div>
   <div class="bg-red-300">
@@ -34,14 +41,14 @@
         </div>
         <div class="order-3 my-2 w-16 sm:order-2">
           <div class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50">
-            {{ state.len }}
+            {{ users.length }}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="flex flex-col">
+<div class="flex flex-col min-h-screen">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden sm:rounded-lg">
@@ -73,15 +80,15 @@
               leave-to-class="opacity-0 transform scale-50"
               move-class="transition-all duration-1000 ease-in-out"
             >
-              <div @click="openModal = true; User = donor" v-for="(donor, index) in state.Donors" :key="index">
-                  <div :class="donor.eligible? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(state.selectedGroup == 'All' || state.selectedGroup == donor.Blood) && (eligibleOnly == false || (eligibleOnly == true && donor.eligible == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
+              <div @click="openModal = true; User = user" v-for="user in users" :key="user.id">
+                <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(state.selectedGroup == 'All' || state.selectedGroup == user.bloodGroup)  && (eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
                     <div class="col-span-5 sm:col-span-4 py-4">
                       <div class="flex items-center">
                         <div class="md:ml-6 ml-2">
                           <div class="text-sm font-medium text-gray-900 truncate">
-                            {{ donor.firstName }}
+                            {{ user.firstName }}
                           </div>
-                          <div v-if="donor.eligible" class="text-sm text-green-500">
+                          <div v-if="user.eligibility" class="text-sm text-green-500">
                             Eligible
                           </div>
                           <div v-else class="text-sm text-red-500">
@@ -91,11 +98,11 @@
                       </div>
                     </div>
                     <div class="col-span-5 sm:col-span-4 px-4 py-4 truncate">
-                      <div class="text-sm text-gray-900">{{ donor.Location }}</div>
+                      <div class="text-sm text-gray-900">{{ user.street }}</div>
                     </div>
                     <div class="col-span-2 sm:col-span-4 px-1 py-4 whitespace-nowrap">
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        {{ donor.Blood }}
+                        {{ user.bloodGroup }}
                       </span>
                     </div>
                   </div>
@@ -115,29 +122,30 @@
   leave-from-class="opacity-100"
   leave-to-class="opacity-0"
 >
-  <user-modal @closeModal="openModal = false" :User="User"/>
+  <UserModal @closeModal="openModal = false" :User="User"/>
 </transition>
 </template>
 
 <script>
-import { reactive, ref } from '@vue/reactivity';
-import { donors } from '../assets/donors';
-import UserModal from '../components/UserModal.vue';
-import Header from '../components/Header.vue';
-
+import { useLoadUsers, deleteUser } from '@/firebase'
+import Header from '../components/Header'
+import { reactive, ref } from '@vue/reactivity'
+import UserModal from '../components/UserModal'
 export default {
-  components: { UserModal, Header },
   name: 'List',
+  components: {
+    Header,
+    UserModal
+  },
   setup() {
+    const users = useLoadUsers()
     const openModal = ref(false);
     const eligibleOnly = ref(false);
     const User = ref({});
-    let PageName = 'List'
-    // let len = ref(donors.length);
-
+    let PageName = 'List';
     const state = reactive({
-      Donors: donors,
-      len: donors.length,
+      // Donors: donors,
+      // len: donors.length,
       selectedGroup: "All",
       Groups: [
         { value: "All", name: "All" },
@@ -151,24 +159,14 @@ export default {
         { value: "O-", name: "O-" }
       ]
     })
-    function filter(){
-      state.len = 0;
-      for (const donor in state.Donors) {
-        if (Object.hasOwnProperty.call(state.Donors, donor)) {
-          const element = state.Donors[donor];
-          if((state.selectedGroup == 'All' || state.selectedGroup == element.Blood) && (eligibleOnly.value == false || (eligibleOnly.value == true && element.eligible == true))) {
-            state.len +=1;
-          }
-        }
-      }
-    }
 
-    return {
+    return { 
+      users, 
+      deleteUser,
       state,
       openModal,
-      User,
       eligibleOnly,
-      filter,
+      User,
       PageName
     }
   }
@@ -176,5 +174,43 @@ export default {
 </script>
 
 <style>
+.half-circle-spinner, .half-circle-spinner * {
+  box-sizing: border-box;
+}
 
+.half-circle-spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: relative;
+}
+
+.half-circle-spinner .circle {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: calc(60px / 10) solid transparent;
+}
+
+.half-circle-spinner .circle.circle-1 {
+  border-top-color: #ff1d5e;
+  animation: half-circle-spinner-animation 1s infinite;
+}
+
+.half-circle-spinner .circle.circle-2 {
+  border-bottom-color: #ff1d5e;
+  animation: half-circle-spinner-animation 1s infinite alternate;
+}
+
+@keyframes half-circle-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
 </style>

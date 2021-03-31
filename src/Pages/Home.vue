@@ -20,11 +20,6 @@
                     Search for blood 
                 </li>
             </router-link>
-            <router-link to="/Blood-Donors/fireList">
-                <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
-                    List from firebase 
-                </li>
-            </router-link>
             <router-link to="/Blood-Donors/join">
                 <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
