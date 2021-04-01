@@ -54,7 +54,7 @@
                                     Blood donated
                                 </p>
                                 <div class="text-sm">
-                                    12 times
+                                    {{ User.donationNumber }} times
                                 </div>
                             </div>
                         </div>

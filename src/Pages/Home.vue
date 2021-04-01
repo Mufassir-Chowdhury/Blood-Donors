@@ -15,20 +15,25 @@
     </div>
     <div class="h-screen lg:h-auto min-w-full items-center flex justify-center text-center py-12">
         <ul>
-            <router-link to="/Blood-Donors/list">
-                <li @click="topFunction; isLoading = true" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
-                    Search for blood 
+            <router-link @click="topFunction; isLoading = true" to="/Blood-Donors/list">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                    Search from list
                 </li>
             </router-link>
-            <router-link to="/Blood-Donors/join">
-                <li @click="topFunction; isLoading = true" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+            <router-link @click="topFunction; isLoading = true" to="/Blood-Donors/groups">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                    Search by groups
+                </li>
+            </router-link>
+            <router-link @click="topFunction; isLoading = true" to="/Blood-Donors/join">
+                <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
                 </li>
             </router-link>
         </ul>
     </div>
   </div>
-  <transition appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
+  <!-- <transition appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
   v-show="isLoading"
   enter-active-class="transition-all duration-700"
   enter-from-class="opacity-0"
@@ -36,9 +41,9 @@
   leave-active-class="transition-all duration-700"
   leave-from-class="opacity-100"
   leave-to-class="opacity-0"
->
-  <Loading/>
-</transition>
+> -->
+  <Loading v-if="isLoading"/>
+<!-- </transition> -->
 </template>
 
 <script>
@@ -53,6 +58,7 @@ export default {
         function topFunction() {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            console.log('scrolled')
         }
 
         return {

@@ -23,7 +23,7 @@
       </div>
     </form>
   </div>
-  <div class="bg-red-300">
+  <!-- <div class="bg-red-300">
     <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between flex-wrap">
         <div class="w-0 flex-1 flex items-center">
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="flex flex-col min-h-screen">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -57,78 +57,13 @@
               </div>
             </div>
             <div v-if="users.length == 0">
-              <ContentLoader
+              <ContentLoader v-for="i in 7" :key="i"
                 :width="340"
                 :height="84"
                 :speed="2"
                 primaryColor="#f3f3f3"
                 secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
-              >
-                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
-                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
-                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
-              </ContentLoader>
-              <ContentLoader
-                :width="340"
-                :height="84"
-                :speed="2"
-                primaryColor="#f3f3f3"
-                secondaryColor="#ecebeb"
+                class="mx-4 my-4 justify-self-stretch"
               >
                 <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
                 <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 

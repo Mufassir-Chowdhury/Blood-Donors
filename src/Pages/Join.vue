@@ -112,7 +112,10 @@
                     Not Eligible
                   </span>
                 </div>
-
+                <div class=" w-1/4">
+                  <label for="number" class="block text-sm font-medium text-gray-700">How many times donated:</label>
+                  <input v-model="form.donationNumber" type="number" name="number" id="number" autocomplete="number" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-b border-gray-300">
+                </div>
               </fieldset>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -132,12 +135,14 @@
 import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
 import { createUser } from '@/firebase'
+import { useRouter } from 'vue-router';
 
 export default {
   components: { Header },
     name: 'Join',
     setup(){
-      const form = reactive({ firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
+      const router = useRouter()
+      const form = reactive({ donationNumber: 0, firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
       const onSubmit = async () => {
         await createUser({ ...form })
         form.firstName = ''
@@ -149,6 +154,8 @@ export default {
         form.bloodGroup = ''
         form.donated = ''
         form.eligibility = false
+        form.donationNumber = 0
+        router.push('/Blood-Donors/')
       }
 
       let pageName = 'Join';

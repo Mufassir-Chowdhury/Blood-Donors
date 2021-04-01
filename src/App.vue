@@ -15,6 +15,9 @@
                 <router-link @click="topFunction" to="/Blood-Donors/list" class="text-white">
                     Donor List
                 </router-link>
+                <router-link @click="topFunction" to="/Blood-Donors/groups" class="text-white">
+                    Groups
+                </router-link>
                 <router-link @click="topFunction" to="/Blood-Donors/join" class="text-white">
                     Join now
                 </router-link>

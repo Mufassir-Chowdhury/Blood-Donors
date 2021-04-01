@@ -29,6 +29,9 @@
                             <router-link to="/Blood-Donors/list" :class="Page == 'List' ? 'text-gray-800 border-b-2 border-red-300' : 'text-gray-300 hover:text-gray-800'" class="px-3 py-2 text-sm font-medium">
                                 List
                             </router-link>
+                            <router-link to="/Blood-Donors/groups" :class="Page == 'Groups' ? 'text-gray-800 border-b-2 border-red-300' : 'text-gray-300 hover:text-gray-800'" class="px-3 py-2 text-sm font-medium">
+                                Groups
+                            </router-link>
                             <router-link to="/Blood-Donors/join" :class="Page == 'Join' ? 'text-gray-800 border-b-2 border-red-300' : 'text-gray-300 hover:text-gray-800'" class="px-3 py-2 text-sm font-medium">
                                 Join
                             </router-link>

@@ -20,6 +20,16 @@ const routes = [
     path: '/',
     name: 'Home_Short',
     component: () => import("../Pages/Home")
+  },
+  {
+    path: '/Blood-Donors/groups',
+    name: 'Groups',
+    component: () => import("../Pages/Groups")
+  },
+  {
+    path: '/Blood-Donors/groups/:id',
+    name: 'Group List',
+    component: () => import("../Pages/GroupList")
   }
 ]
 
