@@ -16,31 +16,48 @@
     <div class="h-screen lg:h-auto min-w-full items-center flex justify-center text-center py-12">
         <ul>
             <router-link to="/Blood-Donors/list">
-                <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <li @click="topFunction; isLoading = true" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Search for blood 
                 </li>
             </router-link>
             <router-link to="/Blood-Donors/join">
-                <li @click="topFunction" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
+                <li @click="topFunction; isLoading = true" class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-red-600 w-64 my-10">
                     Get yourself on the list 
                 </li>
             </router-link>
         </ul>
     </div>
   </div>
+  <transition appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
+  v-show="isLoading"
+  enter-active-class="transition-all duration-700"
+  enter-from-class="opacity-0"
+  enter-to-class="opacity-100"
+  leave-active-class="transition-all duration-700"
+  leave-from-class="opacity-100"
+  leave-to-class="opacity-0"
+>
+  <Loading/>
+</transition>
 </template>
 
 <script>
+import { ref } from '@vue/reactivity';
+import { Loading } from '../components/Loading';
 export default {
     name: 'Home',
-    
+    components: { Loading },    
     setup(){
+        const isLoading = ref(true);
+        
         function topFunction() {
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
+
         return {
             topFunction,
+            isLoading
         } 
     }
 }
