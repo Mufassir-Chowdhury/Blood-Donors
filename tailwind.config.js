@@ -18,6 +18,16 @@ module.exports = {
         check: "url('/icons/check.svg')",
         landscape: "url('/images/landscape/2.jpg')",
       }),
+      width: {
+        '031': '31%',
+        '015': '15%',
+        '05': '5%',
+        '042': '42%',
+        '0250': '2.50%',
+        '01': '1%',
+        '0050': '0.50%',
+        '03': '3%',
+      }
     },
   },
   variants: {

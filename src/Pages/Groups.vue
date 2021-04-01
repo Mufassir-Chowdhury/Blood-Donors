@@ -42,14 +42,14 @@ export default {
     setup(){
         const PageName = "Groups";
         const groups = [
-            { name: 'A+', link: 'APositive', bgcolor: 'bg-green-100', color: 'bg-green-400', percentage: '31', width: 'w-1/3' },
-            { name: 'B+', link: 'BPositive', bgcolor: 'bg-indigo-100', color: 'bg-indigo-400', percentage: '15', width: 'w-1/6' },
-            { name: 'AB+', link: 'ABPositive', bgcolor: 'bg-blue-100', color: 'bg-blue-400', percentage: '5', width: 'w-1/12' },
-            { name: 'O+', link: 'OPositive', bgcolor: 'bg-pink-100', color: 'bg-pink-400', percentage: '42', width: 'w-5/12' },
-            { name: 'A-', link: 'ANegative', bgcolor: 'bg-red-100', color: 'bg-red-400', percentage: '2.50', width: 'w-1/12' },
-            { name: 'B-', link: 'BNegative', bgcolor: 'bg-yellow-100', color: 'bg-yellow-400', percentage: '1', width: 'w-1/12' },
-            { name: 'AB-', link: 'ABNegative', bgcolor: 'bg-purple-100', color: 'bg-purple-400', percentage: '0.50', width: 'w-1/12' },
-            { name: 'O-', link: 'ONegative', bgcolor: 'bg-gray-100', color: 'bg-gray-400', percentage: '3', width: 'w-1/12' }
+            { name: 'A+', link: 'APositive', bgcolor: 'bg-green-100', color: 'bg-green-400', percentage: '31', width: 'w-031' },
+            { name: 'B+', link: 'BPositive', bgcolor: 'bg-indigo-100', color: 'bg-indigo-400', percentage: '15', width: 'w-015' },
+            { name: 'AB+', link: 'ABPositive', bgcolor: 'bg-blue-100', color: 'bg-blue-400', percentage: '5', width: 'w-05' },
+            { name: 'O+', link: 'OPositive', bgcolor: 'bg-pink-100', color: 'bg-pink-400', percentage: '42', width: 'w-042' },
+            { name: 'A-', link: 'ANegative', bgcolor: 'bg-red-100', color: 'bg-red-400', percentage: '2.50', width: 'w-0250' },
+            { name: 'B-', link: 'BNegative', bgcolor: 'bg-yellow-100', color: 'bg-yellow-400', percentage: '1', width: 'w-01' },
+            { name: 'AB-', link: 'ABNegative', bgcolor: 'bg-purple-100', color: 'bg-purple-400', percentage: '0.50', width: 'w-0050' },
+            { name: 'O-', link: 'ONegative', bgcolor: 'bg-gray-100', color: 'bg-gray-400', percentage: '3', width: 'w-03' }
         ]
         return{
             PageName,
