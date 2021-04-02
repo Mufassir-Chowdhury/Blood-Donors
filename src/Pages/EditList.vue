@@ -23,7 +23,7 @@
       </div>
     </form>
   </div>
-  <!-- <div class="bg-red-300">
+  <div class="bg-red-300">
     <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between flex-wrap">
         <div class="w-0 flex-1 flex items-center">
@@ -33,12 +33,27 @@
         </div>
         <div class="order-3 my-2 w-16 sm:order-2">
           <div class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50">
-            {{ state.len }}
+            {{ users.length }}
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+</div>
+<div class="w-full shadow-lg bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
+  <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
+    <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
+      <div class="container relative left-0 z-50 flex w-3/4 h-auto">
+        <div class="relative flex items-center w-full lg:w-64 h-full group">
+        <svg class="absolute left-0 z-20 w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-gray-400 sm:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
+            </path>
+        </svg>
+        <input v-model="state.search" type="text" class="block w-full py-1.5 pl-10 pr-4 leading-normal rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input" placeholder="Search"/>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="flex flex-col min-h-screen">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -46,14 +61,14 @@
       <div class="shadow overflow-hidden sm:rounded-lg">
         <div class="min-w-full max-w-full ">
             <div class="grid grid-cols-12 gap-3 divide-y divide-gray-200 bg-gray-50">
-              <div scope="col" class="col-span-5 sm:col-span-4 px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <div scope="col" class="col-span-5 px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Name
               </div>
-              <div scope="col" class="col-span-5 sm:col-span-4 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Location
-              </div>
-              <div scope="col" class="col-span-2 sm:col-span-4 pr-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <div scope="col" class="col-span-3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Blood Group
+              </div>
+              <div scope="col" class="col-span-4 pr-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Action
               </div>
             </div>
             <div v-if="users.length == 0">
@@ -88,8 +103,8 @@
 
             >
               <div @click="openModal = true; User = user" v-for="user in users" :key="user.id">
-                <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(state.selectedGroup == 'All' || state.selectedGroup == user.bloodGroup)  && (eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
-                    <div class="col-span-5 sm:col-span-4 py-4">
+                <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(state.search == '' || user.firstName.toLowerCase().indexOf(state.search.toLowerCase()) > -1 || user.lastName.toLowerCase().indexOf(state.search.toLowerCase()) > -1) && (state.selectedGroup == 'All' || state.selectedGroup == user.bloodGroup)  && (eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
+                    <div class="col-span-5 py-4">
                       <div class="flex items-center">
                         <div class="md:ml-6 ml-2">
                           <div class="text-sm font-medium text-gray-900 truncate">
@@ -104,13 +119,33 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-span-5 sm:col-span-4 px-4 py-4 truncate">
-                      <div class="text-sm text-gray-900">{{ user.area }}</div>
+                    <div class="col-span-3 px-4 py-4 truncate">
+                      <div class="text-sm text-gray-900">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          {{ user.bloodGroup }}
+                        </span>
+                      </div>
                     </div>
-                    <div class="col-span-2 sm:col-span-4 px-1 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        {{ user.bloodGroup }}
-                      </span>
+                    <div class="flex justify-center col-span-4 px-1 py-4 whitespace-nowrap">
+                      <router-link :to="`/Blood-Donors/edit/${user.id}`">
+                        <button class="w-8 h-8 md:w-auto flex items-center px-2 py-1 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-gray-900 focus:outline-none">
+                            <svg width="15" height="15" class="md:mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                              <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                            </svg>
+                            <span class=" align-baseline mt-1 hidden md:inline-block">
+                              Edit
+                            </span>
+                        </button>
+                      </router-link>
+                      <button @click="deleteUser(user.id)" class="w-8 h-8 md:w-auto ml-2 flex items-center px-2 py-1 transition ease-in duration-200 uppercase rounded-full bg-red-400 text-white hover:bg-white hover:text-black border-2 hover:border-white border-red-400 focus:outline-none">
+                          <svg width="15" height="15" class="md:mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                          <span class=" align-baseline mt-1 hidden md:inline-block">
+                            Delete
+                          </span>
+                      </button>
                     </div>
                   </div>
               </div>
@@ -120,30 +155,17 @@
     </div>
   </div>
 </div>
-<transition appear-to-class="opacity-100" appear-from-class="opacity-0" appear-active-class="transition-all duration-1000"
-  v-show="openModal"
-  enter-active-class="transition-all duration-700"
-  enter-from-class="opacity-0"
-  enter-to-class="opacity-100"
-  leave-active-class="transition-all duration-700"
-  leave-from-class="opacity-100"
-  leave-to-class="opacity-0"
->
-  <UserModal @closeModal="openModal = false" :User="User"/>
-</transition>
 </template>
 
 <script>
-import { useLoadUsers } from '@/firebase'
+import { useLoadUsers, deleteUser } from '@/firebase'
 import Header from '../components/Header'
 import { reactive, ref } from '@vue/reactivity'
-import UserModal from '../components/UserModal'
 import { ContentLoader } from 'vue-content-loader'
 export default {
   name: 'List',
   components: {
     Header,
-    UserModal,
     ContentLoader
   },
   setup() {
@@ -155,6 +177,7 @@ export default {
     const state = reactive({
       // Donors: donors,
       // len: donors.length,
+      search: '',
       selectedGroup: "All",
       Groups: [
         { value: "All", name: "All" },
@@ -174,7 +197,8 @@ export default {
       openModal,
       eligibleOnly,
       User,
-      PageName
+      PageName,
+      deleteUser
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <Header :Page="pageName"/>
 
-<form @submit.prevent="onSubmit">
+<form @submit.prevent="update">
 <input type="hidden" name="_subject" value="New submission from 'Blood Donors, Sylhet">
 
   <div class="hidden sm:block" aria-hidden="true">
@@ -120,7 +120,7 @@
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Save
+                Update
               </button>
             </div>
           </div>
@@ -134,17 +134,36 @@
 <script>
 import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
-import { createUser } from '@/firebase'
-import { useRouter } from 'vue-router';
+import { getUser, updateUser } from '@/firebase'
+import { useRouter, useRoute } from 'vue-router';
+import { computed, onMounted } from '@vue/runtime-core';
 
 export default {
   components: { Header },
-    name: 'Join',
+    name: 'EditUser',
     setup(){
       const router = useRouter()
+      const route = useRoute()
+      const userID = computed(() => route.params.id)
       const form = reactive({ donationNumber: 0, firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
-      const onSubmit = async () => {
-        await createUser({ ...form })
+      
+      onMounted(async () => {
+          const user = await getUser(userID.value)
+          form.firstName = user.firstName
+          form.lastName = user.lastName
+          form.email = user.email
+          form.street = user.street
+          form.area = user.area
+          form.mobile = user.mobile
+          form.bloodGroup = user.bloodGroup
+          form.donated = user.donated
+          form.eligibility = user.eligibility
+          form.donationNumber = user.donationNumber
+      })
+      
+      const update = async () => {
+        await updateUser(userID.value, { ...form })
+        router.push('/Blood-Donors/edit')
         form.firstName = ''
         form.lastName = ''
         form.email = ''
@@ -155,15 +174,14 @@ export default {
         form.donated = ''
         form.eligibility = false
         form.donationNumber = 0
-        router.push('/Blood-Donors/list')
       }
 
-      let pageName = 'Join';
+      let pageName = 'Edit User';
 
       return {
         pageName,
         form,
-        onSubmit
+        update
       }
     }
 }

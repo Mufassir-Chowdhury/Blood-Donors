@@ -30,6 +30,16 @@ const routes = [
     path: '/Blood-Donors/groups/:id',
     name: 'Group List',
     component: () => import("../Pages/GroupList")
+  },
+  {
+    path: '/Blood-Donors/edit',
+    name: 'Edit List',
+    component: () => import("../Pages/EditList")
+  },
+  {
+    path: '/Blood-Donors/edit/:id',
+    name: 'Edit User',
+    component: () => import("../Pages/EditUser")
   }
 ]
 

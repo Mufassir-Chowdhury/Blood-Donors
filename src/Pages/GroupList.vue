@@ -61,7 +61,7 @@
               </ContentLoader>
             </div>
               <div @click="openModal = true; User = user" v-for="user in users" :key="user.id">
-                <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
+                <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="user.bloodGroup == group && (eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
                     <div class="col-span-5 sm:col-span-4 py-4">
                       <div class="flex items-center">
                         <div class="md:ml-6 ml-2">
@@ -78,7 +78,7 @@
                       </div>
                     </div>
                     <div class="col-span-5 sm:col-span-4 px-4 py-4 truncate">
-                      <div class="text-sm text-gray-900">{{ user.street }}</div>
+                      <div class="text-sm text-gray-900">{{ user.area }}</div>
                     </div>
                     <div class="col-span-2 sm:col-span-4 px-1 py-4 whitespace-nowrap">
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -124,7 +124,8 @@ export default {
         const PageName = 'Groups';
         const route = useRoute()
         const group = computed(() => route.params.id)
-        const users = useLoadUsers(group)
+        const users = useLoadUsers()
+
         
         return {
             PageName,
