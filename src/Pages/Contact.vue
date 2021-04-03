@@ -1,59 +1,6 @@
 <template>
-<!-- <div class="h-screen back">
-    <Header :Page="PageName"/>
-    <div class="md:grid md:grid-cols-2 items-center justify-items-center justify-center h-full">
-        <div class="md:col-span-1 w-full items-center justify-items-center justify-center">
-            <button class="px-4 py-2 flex items-center text-base mb-4 rounded-full text-indigo-500 border border-indigo-500 hover:text-white hover:bg-indigo-500 undefined ">
-                <svg width="20" fill="currentColor" height="20" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
-                    </path>
-                </svg>
-                Facebook
-            </button>
-            <button class="px-4 py-2 flex items-center text-base rounded-full text-indigo-500 border border-indigo-500 hover:text-white hover:bg-indigo-500 undefined ">
-                <svg width="20" fill="currentColor" height="20" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z">
-                    </path>
-                </svg>
-                Facebook
-            </button>
-        </div>
-        <div class="md:col-span-1 h-full min-w-screen flex items-center justify-items-center justify-center">
-            <form class="flex w-full max-w-sm space-x-3" @submit.prevent="send">
-                <div class="w-full max-w-2xl px-5 py-10 m-auto  bg-white rounded-xl shadow dark:bg-gray-800">
-                    <div class="mb-6 text-3xl font-light text-center text-gray-800 dark:text-white">
-                        Contact us !
-                    </div>
-                    <div class="max-w-xl m-auto">
-                        <div class="my-4">
-                            <div class=" relative ">
-                                <input v-model="form.Name" type="name" id="contact-form-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
-                            </div>
-                        </div>
-                        <div class="my-4">
-                            <div class=" relative ">
-                                <input v-model="form.Mobile" type="tel" id="contact-form-mobile" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Mobile"/>
-                            </div>
-                        </div>
-                        <div class="my-4">
-                            <label class="text-gray-700" for="name">
-                                <textarea v-model="form.Comment" class="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="comment" placeholder="Enter your comment" name="comment" rows="5" cols="40">
-                                </textarea>
-                            </label>
-                        </div>
-                        <div class="text-right my-4">
-                            <button type="submit" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                Send
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
 <Header :Page="PageName"/>
-<div class="h-screen lg:grid lg:grid-cols-12">
+<div class="min-h-screen lg:grid lg:grid-cols-12">
     <div class="py-10 lg:col-span-5 lg:bg-gray-300 justify-items-center items-center justify-center lg:h-full flex flex-col">
         <div class="text-4xl font-extrabold mb-4">Get in touch</div>
         <div>"গড়বো রক্তের বন্ধন

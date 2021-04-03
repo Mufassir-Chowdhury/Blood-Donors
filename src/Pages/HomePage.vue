@@ -23,7 +23,7 @@
             <p class="items-center font-extrabold text-4xl text-center md:text-6xl text-black">
                 Rhythm <span class="text-pink-500"> Blood Donation </span> Club, <span class="text-indigo-600"> Sylhet City </span>
             </p>
-            <p class="px-4 max-w-lg text-center items-center font-thin text-sm md:text-lg mt-6 text-gray-500 leading-loose">
+            <p class="px-4 max-w-lg text-center items-center md:font-thin font-normal text-sm md:text-lg mt-6 text-gray-500 leading-loose">
                 A blood donation occurs when a person voluntarily has blood drawn and used for transfusions and/or made into biopharmaceutical medications by a process called fractionation. Donation may be of whole blood, or of specific components directly.
             </p>
             <router-link to="/Blood-Donors/join" class="block bg-pink-600 hover:bg-gray-600 py-3 rounded-md px-4 text-lg text-white font-bold uppercase mt-10">
