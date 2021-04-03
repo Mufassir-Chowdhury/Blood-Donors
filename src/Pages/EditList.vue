@@ -102,7 +102,7 @@
               move-class="transition-all duration-1000 ease-in-out"
 
             >
-              <div @click="openModal = true; User = user" v-for="user in users" :key="user.id">
+              <div v-for="user in users" :key="user.id">
                 <div :class="user.eligibility? 'bg-white hover:bg-gray-100' : 'bg-gray-200'" v-if="(state.search == '' || user.firstName.toLowerCase().indexOf(state.search.toLowerCase()) > -1 || user.lastName.toLowerCase().indexOf(state.search.toLowerCase()) > -1) && (state.selectedGroup == 'All' || state.selectedGroup == user.bloodGroup)  && (eligibleOnly == false || (eligibleOnly == true && user.eligibility == true))" class="border-b border-gray-200 grid grid-cols-12 gap-8">
                     <div class="col-span-5 py-4">
                       <div class="flex items-center">
@@ -155,13 +155,74 @@
     </div>
   </div>
 </div>
+<div class="flex flex-col min-h-screen">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden sm:rounded-lg">
+        <div class="min-w-full max-w-full ">
+            <div class="grid grid-cols-12 gap-3 divide-y divide-gray-200 bg-gray-50">
+              <div scope="col" class="col-span-5 px-2 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </div>
+              <div scope="col" class="col-span-3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Number
+              </div>
+              <div scope="col" class="col-span-4 pr-2 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Comment
+              </div>
+            </div>
+            <div v-if="users.length == 0">
+              <ContentLoader v-for="i in 7" :key="i"
+                :width="340"
+                :height="84"
+                :speed="2"
+                primaryColor="#f3f3f3"
+                secondaryColor="#ecebeb"
+                class="mx-4 my-4 justify-self-stretch"
+              >
+                <rect x="0" y="0" rx="3" ry="3" width="67" height="11" /> 
+                <rect x="76" y="0" rx="3" ry="3" width="140" height="11" /> 
+                <rect x="18" y="23" rx="3" ry="3" width="140" height="11" /> 
+              </ContentLoader>
+            </div>
+              <div v-for="comment in comments" :key="comment.id">
+                <div class="border-b border-gray-200 grid grid-cols-12 gap-8">
+                    <div class="col-span-5 py-4">
+                      <div class="flex items-center">
+                        <div class="md:ml-6 ml-2">
+                          <div class="text-sm font-medium text-gray-900 truncate">
+                            {{ comment.Name }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-span-3 px-4 py-4 truncate">
+                      <div class="text-sm text-gray-900">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          {{ comment.Mobile }}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex justify-center col-span-4 whitespace-wrap">
+                      {{comment.Comment}}
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </template>
 
 <script>
-import { useLoadUsers, deleteUser } from '@/firebase'
+import { useLoadUsers, deleteUser, useLoadComments } from '@/firebase'
 import Header from '../components/Header'
 import { reactive, ref } from '@vue/reactivity'
 import { ContentLoader } from 'vue-content-loader'
+import { onBeforeMount } from '@vue/runtime-core'
+
 export default {
   name: 'List',
   components: {
@@ -169,6 +230,11 @@ export default {
     ContentLoader
   },
   setup() {
+    onBeforeMount(() => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    })
+    const comments = useLoadComments()
     const users = useLoadUsers()
     const openModal = ref(false);
     const eligibleOnly = ref(false);
@@ -198,7 +264,8 @@ export default {
       eligibleOnly,
       User,
       PageName,
-      deleteUser
+      deleteUser,
+      comments
     }
   }
 }

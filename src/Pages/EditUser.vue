@@ -136,12 +136,18 @@ import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
 import { getUser, updateUser } from '@/firebase'
 import { useRouter, useRoute } from 'vue-router';
-import { computed, onMounted } from '@vue/runtime-core';
+import { computed, onMounted, onBeforeMount } from '@vue/runtime-core';
+
 
 export default {
   components: { Header },
     name: 'EditUser',
     setup(){
+      onBeforeMount(() => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      })
+
       const router = useRouter()
       const route = useRoute()
       const userID = computed(() => route.params.id)

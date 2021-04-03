@@ -136,11 +136,17 @@ import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
 import { createUser } from '@/firebase'
 import { useRouter } from 'vue-router';
+import { onBeforeMount } from '@vue/runtime-core'
 
 export default {
   components: { Header },
     name: 'Join',
     setup(){
+      onBeforeMount(() => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      })
+
       const router = useRouter()
       const form = reactive({ donationNumber: 0, firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
       const onSubmit = async () => {

@@ -139,6 +139,7 @@ import Header from '../components/Header'
 import { reactive, ref } from '@vue/reactivity'
 import UserModal from '../components/UserModal'
 import { ContentLoader } from 'vue-content-loader'
+import { onBeforeMount } from '@vue/runtime-core'
 export default {
   name: 'List',
   components: {
@@ -147,6 +148,11 @@ export default {
     ContentLoader
   },
   setup() {
+    onBeforeMount(() => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    })
+
     const users = useLoadUsers()
     const openModal = ref(false);
     const eligibleOnly = ref(false);

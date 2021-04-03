@@ -34,12 +34,18 @@
 </template>
 
 <script>
+import { onBeforeMount } from '@vue/runtime-core';
 import Header from '../components/Header'
 
 export default {
     name: 'Groups',
     components: { Header },
     setup(){
+        onBeforeMount(() => {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        })
+
         const PageName = "Groups";
         const groups = [
             { name: 'A+', link: 'A+', bgcolor: 'bg-green-100', color: 'bg-green-400', percentage: '31', width: 'w-031' },

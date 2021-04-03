@@ -16,9 +16,14 @@ const firebaseApp = firebase.initializeApp(config)
 
 const db = firebaseApp.firestore()
 const usersCollection = db.collection('users')
+const Comments = db.collection('comments')
 
 export const createUser = user => {
   return usersCollection.add(user)
+}
+
+export const Comment = comment => {
+  return Comments.add(comment)
 }
 
 export const getUser = async id => {
@@ -41,4 +46,13 @@ export const useLoadUsers = () => {
   })
   onUnmounted(close)
   return users
+}
+
+export const useLoadComments = () => {
+  const comments = ref([])
+  const close = Comments.onSnapshot(snapshot => {
+    comments.value = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+  })
+  onUnmounted(close)
+  return comments
 }

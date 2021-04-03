@@ -112,12 +112,18 @@ import { useLoadUsers } from '@/firebase'
 import { ref } from '@vue/reactivity'
 import { ContentLoader } from 'vue-content-loader'
 import { useRoute } from 'vue-router'
-import { computed } from '@vue/runtime-core';
+import { computed, onBeforeMount } from '@vue/runtime-core';
 import UserModal from '../components/UserModal.vue';
 export default {
   components: { Header, ContentLoader, UserModal },
     name: 'GroupList',
     setup(){
+      onBeforeMount(() => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      })
+
+
         const openModal = ref(false);
         const eligibleOnly = ref(false);
         const User = ref({});
