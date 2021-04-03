@@ -43,9 +43,9 @@
                     Search by groups
                 </li>
             </router-link>
-            <router-link to="/Blood-Donors/join">
+            <router-link to="/Blood-Donors/contact">
                 <li class="cursor-pointer rounded-lg shadow-lg py-4 text-white text-xl font-bold h-16 bg-pink-600 w-64 my-10">
-                    Get yourself on the list 
+                    Contact us!
                 </li>
             </router-link>
         </ul>
