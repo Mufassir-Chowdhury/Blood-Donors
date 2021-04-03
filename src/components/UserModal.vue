@@ -45,7 +45,7 @@
                                 <p @click="copyURL">
                                     Mobile
                                 </p>
-                                <div :href="User.Mobile" class="text-sm" ref="mylink">
+                                <div :href="User.mobile" class="text-sm" ref="mylink">
                                     {{ User.mobile }}
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="flex items-center justify-between gap-4 w-full mt-8">
-                        <a :href="'tel:'+User.Mobile" type="button" class=" align-baseline flex justify-center items-center py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                        <a :href="'tel:'+User.mobile" type="button" class=" align-baseline flex justify-center items-center py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                             <svg class="animate-pulse stroke-1 w-6 h-6 mx-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
