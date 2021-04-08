@@ -128,7 +128,6 @@
     </div>
   </div>
 </form>
-
 </template>
 
 <script>
@@ -147,21 +146,23 @@ export default {
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       })
 
-      const router = useRouter()
+      const router = useRouter();
       const form = reactive({ donationNumber: 0, firstName: '', lastName: '', email: '', street: '', area: '', mobile: '', bloodGroup: '', eligibility: false, donated: '' })
       const onSubmit = async () => {
-        await createUser({ ...form })
-        form.firstName = ''
-        form.lastName = ''
-        form.email = ''
-        form.street = ''
-        form.area = ''
-        form.mobile = ''
-        form.bloodGroup = ''
-        form.donated = ''
-        form.eligibility = false
-        form.donationNumber = 0
-        router.push('/Blood-Donors/list')
+        
+          await createUser({ ...form })
+          form.firstName = ''
+          form.lastName = ''
+          form.email = ''
+          form.street = ''
+          form.area = ''
+          form.mobile = ''
+          form.bloodGroup = ''
+          form.donated = ''
+          form.eligibility = false
+          form.donationNumber = 0
+          router.push('/Blood-Donors/list')
+        
       }
 
       let pageName = 'Join';

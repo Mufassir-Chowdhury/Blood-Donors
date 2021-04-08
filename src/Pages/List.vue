@@ -154,7 +154,7 @@ export default {
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     })
 
-    const users = useLoadUsers()
+    const users = useLoadUsers();
     const openModal = ref(false);
     const eligibleOnly = ref(false);
     const User = ref({});

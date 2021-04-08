@@ -50,6 +50,11 @@ const routes = [
     path: '/Blood-Donors/contact',
     name: 'Contact',
     component: () => import("../Pages/Contact")
+  },
+  {
+    path: '/Blood-Donors/export',
+    name: 'Export',
+    component: () => import("../Pages/Export")
   }
 ]
 
