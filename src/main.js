@@ -21,13 +21,13 @@ const config = {
 
 const firebaseApp = firebase.initializeApp(config)
 
-let app;
-firebase.auth().onAuthStateChanged(user => {
-    console.log(user);
-    if(!app){
-        createApp(App).use(router).mount('#app')
-    }
-})
+// let app;
+// firebase.auth().onAuthStateChanged(user => {
+//     console.log(user);
+//     if(!app){
+  //     }
+  // })
+createApp(App).use(router).mount('#app')
 
 
 const db = firebaseApp.firestore()

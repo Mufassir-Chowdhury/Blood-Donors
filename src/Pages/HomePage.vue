@@ -29,7 +29,7 @@
             <router-link to="/Blood-Donors/join" class="block bg-pink-600 hover:bg-gray-600 py-3 rounded-md px-4 text-lg text-white font-bold uppercase mt-10">
                 Join Now
             </router-link>
-            <button @click="signOut">Log out</button>
+            <button class="mt-6" @click="signOut">Log out</button>
         </div>
     </div>
         <div class="h-screen md:hidden lg:h-auto min-w-full items-center flex justify-center text-center py-12">
