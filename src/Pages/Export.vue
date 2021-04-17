@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { useLoadUsers } from '@/firebase'
+import { useLoadUsers } from '@/main'
 import Header from '../components/Header.vue';
 
 export default {

@@ -134,7 +134,7 @@
 <script>
 import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
-import { getUser, updateUser } from '@/firebase'
+import { getUser, updateUser } from '@/main'
 import { useRouter, useRoute } from 'vue-router';
 import { computed, onMounted, onBeforeMount } from '@vue/runtime-core';
 

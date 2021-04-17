@@ -133,7 +133,7 @@
 <script>
 import { reactive } from '@vue/reactivity';
 import Header from '../components/Header.vue';
-import { createUser } from '@/firebase'
+import { createUser } from '@/main'
 import { useRouter } from 'vue-router';
 import { onBeforeMount } from '@vue/runtime-core'
 

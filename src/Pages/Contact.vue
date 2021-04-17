@@ -74,7 +74,7 @@
 import Header from '../components/Header'
 import { useRouter } from 'vue-router'
 import { reactive } from '@vue/reactivity'
-import { Comment } from '@/firebase'
+import { Comment } from '@/main'
 
 export default {
     name: 'Contact',

@@ -217,7 +217,7 @@
 </template>
 
 <script>
-import { useLoadUsers, deleteUser, useLoadComments } from '@/firebase'
+import { useLoadUsers, deleteUser, useLoadComments } from '@/main'
 import Header from '../components/Header'
 import { reactive, ref } from '@vue/reactivity'
 import { ContentLoader } from 'vue-content-loader'

@@ -109,7 +109,7 @@
 <script>
 import Header from '../components/Header.vue';
 // import { UserModal } from "../components/UserModal.vue";
-import { useLoadUsers } from '@/firebase'
+import { useLoadUsers } from '@/main'
 import { ref } from '@vue/reactivity'
 import { ContentLoader } from 'vue-content-loader'
 import { useRoute } from 'vue-router'
