@@ -161,7 +161,7 @@ export default {
           form.donated = ''
           form.eligibility = false
           form.donationNumber = 0
-          router.push('/Blood-Donors/list')
+          router.push('/Blood-Donors/')
         
       }
 

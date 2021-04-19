@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import HomePage from '../Pages/HomePage.vue';
-import Login from '../Pages/Login.vue';
 
 const routes = [
   {
@@ -20,13 +18,13 @@ const routes = [
   {
     path: '/Blood-Donors',
     name: 'Home',
-    component: HomePage,
+    component: () => import("../Pages/HomePage"),
     meta: {requiresAuth: true}
   },
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: () => import("../Pages/Login")
   },
   {
     path: '/Blood-Donors/groups',
